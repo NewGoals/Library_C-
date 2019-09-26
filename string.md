@@ -77,7 +77,7 @@ s1.swap(s2);  // s1 = "East"，s2 = "West"
 ```
 
 ## 八. 查找子串和字符
-- string 类有一些查找子串和字符的成员函数，它们的返回值都是子串或字符在 string 对象字符串中的位置（即下标）。如果查不到，则返回 string::npos。string: :npos 是在 string 类中定义的一个静态常量。这些函数如下：
+- string 类有一些查找子串和字符的成员函数，它们的返回值都是子串或字符在 string 对象字符串中的位置（即下标）。如果查不到，则返回 string::npos。string: :npos 是在 string 类中定义的一个静态常量。见string.cpp。
     - ***find***：从前往后查找子串或字符出现的位置。
     - ***rfind***：从后往前查找子串或字符出现的位置。  
     - ***find_first_of***：从前往后查找何处出现另一个字符串中包含的字符。例如：  
@@ -99,3 +99,22 @@ int n = s2.find("OOOOO");  //查找子串 "00000" 的位置，n=2
 s2.replace(n, 5, "XXX");  //将子串(n,5)替换为"XXX"
 cout << s2 < < endl;  //输出 HaXXX Potter
 ```
+
+## 十. 删除子串
+- erase 成员函数可以删除 string 对象中的子串，返回值为对象自身的引用。例如：
+``` C++
+string s1("Real Steel");
+s1.erase(1, 3);  //删除子串(1, 3)，此后 s1 = "R Steel"
+s1.erase(5);  //删除下标5及其后面的所有字符，此后 s1 = "R Ste"
+``` 
+## 十一. 插入字符串
+- insert 成员函数可以在 string 对象中插入另一个字符串，返回值为对象自身的引用。例如：
+``` C++
+string s1("Limitless"), s2("00");
+s1.insert(2, "123");  //在下标 2 处插入字符串"123"，s1 = "Li123mitless"
+s1.insert(3, s2);  //在下标 2 处插入 s2 , s1 = "Li10023mitless"
+s1.insert(3, 5, 'X');  //在下标 3 处插入 5 个 'X'，s1 = "Li1XXXXX0023mitless"
+```
+
+## 十二. 将string对象作为流处理
+- 使用流对象 istringstream 和 ostringstream，可以将 string 对象当作一个流进行输入输出。使用这两个类需要包含头文件 sstream。见string.cpp。
